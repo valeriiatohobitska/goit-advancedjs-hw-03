@@ -1,15 +1,17 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/vendor-BKUsfwBl.js","assets/vendor-DumFYO8Z.css"])))=>i.map(i=>d[i]);
 import{a as f,S as w}from"./assets/vendor-BKUsfwBl.js";(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))t(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const o of r.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&t(o)}).observe(document,{childList:!0,subtree:!0});function n(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function t(e){if(e.ep)return;e.ep=!0;const r=n(e);fetch(e.href,r)}})();const v="modulepreload",L=function(i){return"/goit-advancedjs-hw-03/"+i},m={},S=function(s,n,t){let e=Promise.resolve();if(n&&n.length>0){document.getElementsByTagName("link");const o=document.querySelector("meta[property=csp-nonce]"),a=(o==null?void 0:o.nonce)||(o==null?void 0:o.getAttribute("nonce"));e=Promise.allSettled(n.map(c=>{if(c=L(c),c in m)return;m[c]=!0;const u=c.endsWith(".css"),y=u?'[rel="stylesheet"]':"";if(document.querySelector(`link[href="${c}"]${y}`))return;const l=document.createElement("link");if(l.rel=u?"stylesheet":v,u||(l.as="script"),l.crossOrigin="",l.href=c,a&&l.setAttribute("nonce",a),document.head.appendChild(l),u)return new Promise((g,b)=>{l.addEventListener("load",g),l.addEventListener("error",()=>b(new Error(`Unable to preload CSS for ${c}`)))})}))}function r(o){const a=new Event("vite:preloadError",{cancelable:!0});if(a.payload=o,window.dispatchEvent(a),!a.defaultPrevented)throw o}return e.then(o=>{for(const a of o||[])a.status==="rejected"&&r(a.reason);return s().catch(r)})},E="https://pixabay.com/api/",P="37266256-83bd782bb95c33f4401b18249";async function _(i){const s=new URLSearchParams({key:P,q:i,image_type:"photo",orientation:"horizontal",safesearch:"true"});try{const t=await(await fetch(`${E}?${s}`)).json();if(!t.hits.length)throw new Error("No results");return t.hits}catch(n){const{default:t}=await S(async()=>{const{default:e}=await import("./assets/vendor-BKUsfwBl.js").then(r=>r.i);return{default:e}},__vite__mapDeps([0,1]));throw t.error({message:"Sorry, there are no images matching. Please try again",position:"topRight"}),n}}function $(i){const s=document.querySelector(".gallery");s.innerHTML="";const n=i.map(t=>`
-      <a class="gallery__item" href="${t.largeImageURL}">
-        <div class="photo-card">
-          <img src="${t.webformatURL}" alt="${t.tags}" loading="lazy" />
-          <div class="info">
-            <p><b>Likes:</b> ${t.likes}</p>
-            <p><b>Views:</b> ${t.views}</p>
-            <p><b>Comments:</b> ${t.comments}</p>
-            <p><b>Downloads:</b> ${t.downloads}</p>
+      <li class="gallery__item">
+        <a href="${t.largeImageURL}">
+          <div class="photo-card">
+            <img src="${t.webformatURL}" alt="${t.tags}" loading="lazy" />
+            <div class="info">
+              <p><b>Likes:</b> ${t.likes}</p>
+              <p><b>Views:</b> ${t.views}</p>
+              <p><b>Comments:</b> ${t.comments}</p>
+              <p><b>Downloads:</b> ${t.downloads}</p>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </li>
     `).join("");s.insertAdjacentHTML("beforeend",n)}const h=document.querySelector(".form"),q=h.querySelector('input[name="search"]'),p=document.querySelector(".loader");let d=null;h.addEventListener("submit",R);function R(i){i.preventDefault();const s=q.value.trim();if(s===""){f.warning({message:"Please enter a search query.",position:"topRight"});return}p.classList.add("active"),_(s).then(n=>{$(n),d?d.refresh():d=new w(".gallery a",{captionsData:"alt",captionDelay:250})}).catch(n=>{f.error({message:"Something went wrong. Please try again later.",position:"topRight"}),console.error(n)}).finally(()=>{p.classList.remove("active")})}
 //# sourceMappingURL=index.js.map
