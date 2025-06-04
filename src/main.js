@@ -7,7 +7,7 @@ import { renderGallery } from './js/render-functions';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const form = document.querySelector('.search-form');
+const form = document.querySelector('.form');
 const input = form.querySelector('input[name="search"]');
 const loader = document.querySelector('.loader');
 
